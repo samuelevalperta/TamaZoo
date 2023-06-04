@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.unibs.ing.fp.lab.TamaZoo</OriginalElement>
+  <nodes>
+    <node x="204.0" y="624.0">it.unibs.ing.fp.lab.TamaZoo.GestoreTamaZoo</node>
+    <node x="1.75" y="-19.0">it.unibs.ing.fp.lab.TamaZoo.Tamagotchi</node>
+    <node x="146.0" y="419.0">it.unibs.ing.fp.lab.TamaZoo.TamaGordo</node>
+    <node x="412.0" y="-19.0">it.unibs.ing.fp.lab.TamaZoo.TamaZoo</node>
+    <node x="-92.0" y="624.0">it.unibs.ing.fp.lab.TamaZoo.IOUtil</node>
+    <node x="-92.0" y="419.0">it.unibs.ing.fp.lab.TamaZoo.TamaTriste</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.unibs.ing.fp.lab.TamaZoo.TamaTriste" target="it.unibs.ing.fp.lab.TamaZoo.Tamagotchi" relationship="GENERALIZATION">
+      <point x="0.0" y="-80.0" />
+      <point x="17.0" y="394.0" />
+      <point x="136.75" y="394.0" />
+      <point x="0.0" y="194.0" />
+    </edge>
+    <edge source="it.unibs.ing.fp.lab.TamaZoo.TamaGordo" target="it.unibs.ing.fp.lab.TamaZoo.Tamagotchi" relationship="GENERALIZATION">
+      <point x="0.0" y="-80.0" />
+      <point x="256.5" y="394.0" />
+      <point x="136.75" y="394.0" />
+      <point x="0.0" y="194.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7931555099967756" showDependencies="false" x="335.3664924729038" y="392.4381374305402" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
