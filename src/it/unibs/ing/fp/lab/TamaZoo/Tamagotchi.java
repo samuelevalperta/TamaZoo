@@ -17,9 +17,9 @@ public class Tamagotchi {
 	protected static final int MIN_SAZIETA_FELICITA = 30;
 	protected static final int MAX_SAZIETA_FELICITA = 90;
 	public static final String FORMAT_TOSTRING = "Nome: %s\nTipo: %s\nAffetto: %.2f\nSazieta: %.2f";
-
+	
 	/**
-	 * Rappresenta il nome del Tamagotchi
+	 * Represents the name of the Tamagotchi instance
 	 */
 	private String nome;
 	/**
