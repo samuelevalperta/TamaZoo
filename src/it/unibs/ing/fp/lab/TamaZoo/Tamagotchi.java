@@ -1,5 +1,5 @@
 /**
- * @author Samuele Valperta
+ * @author Samuele
  */
 
 package it.unibs.ing.fp.lab.TamaZoo;
@@ -18,33 +18,25 @@ public class Tamagotchi {
 	protected static final int MAX_SAZIETA_FELICITA = 90;
 	public static final String FORMAT_TOSTRING = "Nome: %s\nTipo: %s\nAffetto: %.2f\nSazieta: %.2f";
 	
-	/**
-	 * Represents the name of the Tamagotchi instance
-	 */
+	/** The name of the Tamagotchi instance. */
 	private String nome;
-	/**
-	 * Rappresenta la sazieta' del Tamagotchi
-	 */
+	/** The sazieta variable represents the satiety level of the Tamagotchi. */
 	private double sazieta;
-	/**
-	 * Rappresenta lo stato affettivo del Tamagotchi
-	 */
+	/** The affection level of the Tamagotchi instance, ranging from 0 (none) to 100 (max). */
 	private double affetto;
-
-	/**
-	 * Rappresenta la tipologia del Tamagotchi
-	 */
+	/** The type of the Tamagotchi instance. */
 	protected String nomeTipo;
 
 	public Tamagotchi() {
 	}
 
 	/**
-	 * Costruttore che permette l'inizializzazione degli attributi del Tamagotchi a discapito del nomeTipo
-	 * @param _nome Nome del Tamagotchi, può essere nullo
-	 * @param _affetto Valore iniziale dell'affetto, non può essere negativo
-	 * @param _sazieta Valore iniziale di sazieta', non può essere negativo
-	 * @throws IllegalArgumentException Se vengono passati dei valori negativi
+	 * Constructs a new Tamagotchi instance with the given name, affection and satiety levels.
+	 *
+	 * @param _nome     The name of the Tamagotchi instance.
+	 * @param _affetto  The initial affection level of the Tamagotchi, ranging from 0 (none) to 100 (max).
+	 * @param _sazieta  The initial satiety level of the Tamagotchi, ranging from 0 (none) to 100 (max).
+	 * @throws IllegalArgumentException If any of the levels (_affetto, _sazieta) passed are negative.
 	 */
 	public Tamagotchi(String _nome, double _affetto, double _sazieta) throws IllegalArgumentException {
 		
@@ -59,11 +51,15 @@ public class Tamagotchi {
 	}
 	
 	/**
-	 * Metodo per accarezzare, questo comporta l'aumento della quantita' di affetto e la diminuzione di sazieta'.
-	 * I nuovi valori vengono impostati rispettando i limiti massimi consentiti
-	 * @param carezze numero di carezze da fare al tamagotchi
-	 * @throws IllegalArgumentException Se la quantita' di carezze date e' negativa
-	 */
+		 * Adjusts the Tamagotchi instance's level of affection and satiety based on the received number of caresses (carezze).
+		 * If the input value is negative, an IllegalArgumentException is thrown. The affection level increases by the number of
+		 * caresses, while the satiety level decreases by the amount of caresses divided by the predefined affection factor.
+		 * The affection level is capped at the maximum affection value, and the satiety level does not go below the minimum
+		 * satiety value.
+		 *
+		 * @param carezze integer representing the number of caresses given to the Tamagotchi instance.
+		 * @throws IllegalArgumentException if the input value is negative.
+		 */
 	public void riceviCarezze(int carezze) throws IllegalArgumentException {
 		
 		if (carezze < 0) {
@@ -75,11 +71,16 @@ public class Tamagotchi {
 	}
 
 	/**
-	 * Metodo per sfamare, questo comporta l'aumento di sazieta' e la diminuizione di affetto.
-	 * I nuovi valori vengono impostati rispettando i limiti massimi consentiti.
-	 * @param biscotti numero di biscotti da dare al tamagotchi
-	 * @throws IllegalArgumentException Se la quantita' di biscotti dati e' negativa
-	 */
+		 * This method allows receiving a number of biscuits for Tamagotchi to increase its satiety level as well
+		 * as decrease its affection level. The method throws an IllegalArgumentException if the input value is negative.
+		 * The satiety level, sazieta, increases by a factor of FATTORE_BISCOTTI with every biscuit
+		 * received, up to the maximum value, MAX_SAZIETA.
+		 * The affection level, affetto, decreases based on the number of biscuits received and the
+		 * FATTORE_BISCOTTI_AFFETTO, but doesn't go below the minimum value, MIN_AFFETTO.
+		 *
+		 * @param biscotti The number of biscuits received; a positive integer.
+		 * @throws IllegalArgumentException If the number of biscuits received is negative.
+		 */
 	public void riceviBiscotti(int biscotti) throws IllegalArgumentException {
 		
 		if (biscotti < 0) {
@@ -93,82 +94,69 @@ public class Tamagotchi {
 	}
 	
 	/**
-	 * Definisce se il tamagotchi e' morto in base ai valori di sazieta' e affetto, accordando con limiti prestabiliti
-	 * @return Ritorna true se il tamgotchi e' morto
-	 */
+	 	* Determines if the Tamagotchi instance is dead based on its affection and satiety levels.
+	 	* A Tamagotchi is considered dead if its affection reaches the minimum value, MIN_AFFETTO, or
+	 	* if its satiety reaches either the minimum value, MIN_SAZIETA, or the maximum value, MAX_SAZIETA.
+	 	*
+	 	* @return true if the Tamagotchi is dead; false otherwise.
+	 	*/
 	public boolean sonoMorto() {
 		return affetto == MIN_AFFETTO || sazieta == MIN_SAZIETA || sazieta == MAX_SAZIETA;
 	}
-
+	
 	/**
-	 * Definisce se il tamagotchi e' triste in base ai valori di sazieta' e affetto, accordando con limiti prestabiliti
-	 * @return Ritorna true se il tamgotchi e' triste
-	 */
+		 * Checks if the Tamagotchi instance is sad.
+		 *
+		 * SonoTriste method determines whether the Tamagotchi instance is sad by comparing the values of affection and satiety
+		 * with the predefined constants for happiness. The method returns true if any of the conditions are met:
+		 * 1. Affection level is less than the minimum affection level for happiness (MIN_AFFETTO_FELICITA).
+		 * 2. Satiety level is greater than the maximum satiety level for happiness (MAX_SAZIETA_FELICITA).
+		 * 3. Satiety level is less than the minimum satiety level for happiness (MIN_SAZIETA_FELICITA).
+		 *
+		 * @return true if the Tamagotchi instance is sad, false otherwise.
+		 */
 	public boolean sonoTriste() {
 		return affetto < MIN_AFFETTO_FELICITA ||
 				sazieta > MAX_SAZIETA_FELICITA ||
 				sazieta < MIN_SAZIETA_FELICITA;
 	}
-
-	/**
-	 * 
-	 * @return Ritorna il valore di sazieta'
-	 */
+	
 	public double getSazieta() {
 		return sazieta;
 	}
 
-	/**
-	 * 
-	 * @param sazieta Riceve il valore di sazieta' e lo imposta
-	 */
 	public void setSazieta(double sazieta) {
 		this.sazieta = sazieta;
 	}
 
-	/**
-	 * 
-	 * @return Ritorna il valore di affetto
-	 */
 	public double getAffetto() {
 		return affetto;
 	}
 
-	/**
-	 * 
-	 * @param affetto Riceve il valore di affetto e lo imposta
-	 */
 	public void setAffetto(double affetto) {
 		this.affetto = affetto;
 	}
 
-	/**
-	 *
-	 * @return Ritorna il tipo di tamagotchi
-	 */
 	public String getNomeTipo() {
 		return nomeTipo;
 	}
 
-	/**
-	 *
-	 * @param nomeTipo Riceve il tipo di tamagotchi e lo imposta
-	 */
 	public void setNomeTipo(String nomeTipo) {
 		this.nomeTipo = nomeTipo;
 	}
 
 	/**
-	 * 
-	 * @return Una stringa formattata contente i valori di nome, tipo, affetto e sazieta'
+	 * Returns a formatted string representation of the Tamagotchi object, which includes its name, type, affection and satiety levels.
+	 *
+	 * @return A string representation of the Tamagotchi object, with the format "Nome: {name}\nTipo: {type}\nAffetto: {affection}\nSazieta: {satiety}".
 	 */
 	public String toString() {
 		return String.format(FORMAT_TOSTRING, nome, nomeTipo, affetto, sazieta);
 	}
 	
 	/**
-	 * 
-	 * Il tamagotchi saluta, se e' battezzato si presenta anche.
+	 * The saluta method is used to display a greeting ("Ciao!") to the user.
+	 * If the Tamagotchi instance has a non-empty name, it also displays a message containing the name of the Tamagotchi.
 	 */
 	public void saluta() {
 		System.out.println("Ciao!");
@@ -176,6 +164,5 @@ public class Tamagotchi {
 			System.out.println("Mi chiamo " + nome);
 		}
 	}
-	
 
 }
